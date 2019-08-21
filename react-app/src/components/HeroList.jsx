@@ -9,14 +9,20 @@ class HeroList extends Component {
     };
   };
 
+  componentDidMount() {
+    var filtered = this.props.heroes.filter(hero => {
+      return hero !== null;
+    });
+    console.log(filtered);
+  }
+
   render() {
     return (
-      <div className="container col-12 bg-light">
+      <div className="container col-12">
         <div className="row">
           {this.props.heroes.map(hero => (
             <Hero key={hero.id} hero={hero} styles={this.getStyle()} />
           ))}
-          ;
         </div>
       </div>
     );

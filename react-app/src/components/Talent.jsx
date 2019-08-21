@@ -1,16 +1,18 @@
 import React, { Component } from "react";
 
 export default class Talent extends Component {
-  getRandomNumber = () => {
-    return this.props.randomNumber === this.props.sortNumber
-      ? this.getStyle()
-      : null;
+  state = {
+    selected: false
   };
 
   getStyle = () => {
-    if (this.props.selected === true) {
+    let selected = false;
+    if (this.props.talent.sort === this.props.randomNumber) {
+      selected = true;
+    }
+    if (selected === true) {
       return {
-        border: "2px solid #63AFD0",
+        border: "4px solid #63AFD0",
         boxShadow: "0px 0px 12px #63AFD0"
       };
     }
@@ -24,13 +26,11 @@ export default class Talent extends Component {
 
   render() {
     return (
-      <td>
-        <img
-          src={this.formatURL(this.props.talent)}
-          alt=""
-          style={this.getStyle()}
-        />
-      </td>
+      <img
+        src={this.formatURL(this.props.talent.icon)}
+        alt=""
+        style={this.getStyle()}
+      />
     );
   }
 }

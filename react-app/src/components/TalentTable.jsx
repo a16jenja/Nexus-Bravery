@@ -1,31 +1,82 @@
 import React, { Component } from "react";
 import Talent from "./Talent";
 import uuidv4 from "uuid/v4";
+import TalentRow from "./TalentRow";
 
 export default class TalentTable extends Component {
-  render() {
-    const randomNumber = Math.floor(
-      Math.random() * this.props.randomHero.talents[1].length + 1
-    );
-    console.log(randomNumber);
-    return (
-      <div className="container">
-        <table className="table">
-          <thead>
-            <tr>
-              <th scope="col">Level</th>
-              <th scope="col">Talent 1</th>
-              <th scope="col">Talent 2</th>
-              <th scope="col">Talent 3</th>
-              <th scope="col">Talent 4</th>
-            </tr>
-          </thead>
-          <tbody>
-            {this.props.randomHero.talents.map(talent => {
-              console.log(talent);
-            })}
+  generateRandomNumber = length => {
+    console.log(length);
+    return Math.floor(Math.random() * length + 1);
+  };
 
-            {/* <tr>
+  render() {
+    return (
+      <React.Fragment>
+        <TalentRow
+          heroes={this.props.heroes}
+          randomHero={this.props.randomHero}
+          talentTier={this.props.talentTiers[0]}
+          randomNumber={this.generateRandomNumber(
+            this.props.randomHero.talents[1].length
+          )}
+        />
+
+        <TalentRow
+          heroes={this.props.heroes}
+          randomHero={this.props.randomHero}
+          talentTier={this.props.talentTiers[1]}
+          randomNumber={this.generateRandomNumber(
+            this.props.randomHero.talents[4].length
+          )}
+        />
+
+        <TalentRow
+          heroes={this.props.heroes}
+          randomHero={this.props.randomHero}
+          talentTier={this.props.talentTiers[2]}
+          randomNumber={this.generateRandomNumber(
+            this.props.randomHero.talents[7].length
+          )}
+        />
+
+        <TalentRow
+          heroes={this.props.heroes}
+          randomHero={this.props.randomHero}
+          talentTier={this.props.talentTiers[3]}
+          randomNumber={this.generateRandomNumber(
+            this.props.randomHero.talents[10].length
+          )}
+        />
+
+        <TalentRow
+          heroes={this.props.heroes}
+          randomHero={this.props.randomHero}
+          talentTier={this.props.talentTiers[4]}
+          randomNumber={this.generateRandomNumber(
+            this.props.randomHero.talents[13].length
+          )}
+        />
+
+        <TalentRow
+          heroes={this.props.heroes}
+          randomHero={this.props.randomHero}
+          talentTier={this.props.talentTiers[5]}
+          randomNumber={this.generateRandomNumber(
+            this.props.randomHero.talents[16].length
+          )}
+        />
+
+        <TalentRow
+          heroes={this.props.heroes}
+          randomHero={this.props.randomHero}
+          talentTier={this.props.talentTiers[6]}
+          randomNumber={this.generateRandomNumber(
+            this.props.randomHero.talents[20].length
+          )}
+        />
+      </React.Fragment>
+
+      /* <tr>
               <th scope="row">1</th>
               {this.props.randomHero.talents[1].map(talent => (
                 <Talent
@@ -103,10 +154,7 @@ export default class TalentTable extends Component {
                   randomHero={this.props.randomHero}
                 />
               ))}
-            </tr> */}
-          </tbody>
-        </table>
-      </div>
+            </tr> */
     );
   }
 }
