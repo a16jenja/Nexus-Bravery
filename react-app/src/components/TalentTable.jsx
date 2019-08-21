@@ -1,14 +1,13 @@
 import React, { Component } from "react";
 import Talent from "./Talent";
+import uuidv4 from "uuid/v4";
 
 export default class TalentTable extends Component {
-  checkIfSelected = talent => {};
-
   render() {
-    const btnStyle = {
-      padding: "1em 0"
-    };
-
+    const randomNumber = Math.floor(
+      Math.random() * this.props.randomHero.talents[1].length + 1
+    );
+    console.log(randomNumber);
     return (
       <div className="container">
         <table className="table">
@@ -19,107 +18,94 @@ export default class TalentTable extends Component {
               <th scope="col">Talent 2</th>
               <th scope="col">Talent 3</th>
               <th scope="col">Talent 4</th>
-              <th scope="col">Talent 5</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
+            {this.props.randomHero.talents.map(talent => {
+              console.log(talent);
+            })}
+
+            {/* <tr>
               <th scope="row">1</th>
-              {this.props.heroes
-                .filter(hero => hero.name === this.props.randomHero)
-                .map(hero =>
-                  hero.talents
-                    .filter(level => level.level === 1)
-                    .map(talent => (
-                      <Talent
-                        talent={talent}
-                        onRandomButton={this.props.handleRandomButton}
-                        randomHero={this.props.randomHero}
-                        selected={this.props.selected}
-                        isSelected={this.props.isSelected}
-                      />
-                    ))
-                )}
+              {this.props.randomHero.talents[1].map(talent => (
+                <Talent
+                  key={uuidv4()}
+                  talent={talent.icon}
+                  randomHero={this.props.randomHero}
+                  selected={talent.sort === randomNumber ? true : false}
+                />
+              ))}
             </tr>
 
             <tr>
               <th scope="row">4</th>
-              {this.props.heroes
-                .filter(hero => hero.name === this.props.randomHero)
-                .map(hero =>
-                  hero.talents
-                    .filter(level => level.level === 4)
-                    .map(talent => (
-                      <Talent talent={talent} selected={this.props.selected} />
-                    ))
-                )}
+              {this.props.randomHero.talents[4].map(talent => (
+                <Talent
+                  key={uuidv4()}
+                  talent={talent.icon}
+                  randomHero={this.props.randomHero}
+                  selected={talent.sort === randomNumber ? true : false}
+                />
+              ))}
             </tr>
 
             <tr>
               <th scope="row">7</th>
-              {this.props.heroes
-                .filter(hero => hero.name === this.props.randomHero)
-                .map(hero =>
-                  hero.talents
-                    .filter(level => level.level === 7)
-                    .map(talent => <Talent talent={talent} />)
-                )}
+              {this.props.randomHero.talents[7].map(talent => (
+                <Talent
+                  key={uuidv4()}
+                  talent={talent.icon}
+                  randomHero={this.props.randomHero}
+                  selected={talent.sort === randomNumber ? true : false}
+                />
+              ))}
             </tr>
 
             <tr>
               <th scope="row">10</th>
-              {this.props.heroes
-                .filter(hero => hero.name === this.props.randomHero)
-                .map(hero =>
-                  hero.talents
-                    .filter(level => level.level === 10)
-                    .map(talent => <Talent talent={talent} />)
-                )}
+              {this.props.randomHero.talents[10].map(talent => (
+                <Talent
+                  key={uuidv4()}
+                  talent={talent.icon}
+                  randomHero={this.props.randomHero}
+                />
+              ))}
             </tr>
 
             <tr>
               <th scope="row">13</th>
-              {this.props.heroes
-                .filter(hero => hero.name === this.props.randomHero)
-                .map(hero =>
-                  hero.talents
-                    .filter(level => level.level === 13)
-                    .map(talent => <Talent talent={talent} />)
-                )}
+              {this.props.randomHero.talents[13].map(talent => (
+                <Talent
+                  key={uuidv4()}
+                  talent={talent.icon}
+                  randomHero={this.props.randomHero}
+                />
+              ))}
             </tr>
 
             <tr>
               <th scope="row">16</th>
-              {this.props.heroes
-                .filter(hero => hero.name === this.props.randomHero)
-                .map(hero =>
-                  hero.talents
-                    .filter(level => level.level === 16)
-                    .map(talent => <Talent talent={talent} />)
-                )}
+              {this.props.randomHero.talents[16].map(talent => (
+                <Talent
+                  key={uuidv4()}
+                  talent={talent.icon}
+                  randomHero={this.props.randomHero}
+                />
+              ))}
             </tr>
 
             <tr>
               <th scope="row">20</th>
-              {this.props.heroes
-                .filter(hero => hero.name === this.props.randomHero)
-                .map(hero =>
-                  hero.talents
-                    .filter(level => level.level === 20)
-                    .map(talent => <Talent talent={talent} />)
-                )}
-            </tr>
+              {this.props.randomHero.talents[20].map(talent => (
+                <Talent
+                  key={uuidv4()}
+                  talent={talent.icon}
+                  randomHero={this.props.randomHero}
+                />
+              ))}
+            </tr> */}
           </tbody>
         </table>
-        <button
-          type="button"
-          className="btn btn-primary"
-          styles={btnStyle}
-          onClick={this.props.onRandomButton}
-          onChange={this.props.randomHero}
-        >
-          Start
-        </button>
       </div>
     );
   }

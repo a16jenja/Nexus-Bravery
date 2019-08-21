@@ -12,9 +12,9 @@ class HeroList extends Component {
   render() {
     return (
       <div className="container col-12 bg-light">
-        <div class="row">
+        <div className="row">
           {this.props.heroes.map(hero => (
-            <Hero hero={hero} styles={this.getStyle()} />
+            <Hero key={hero.id} hero={hero} styles={this.getStyle()} />
           ))}
           ;
         </div>

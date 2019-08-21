@@ -1,35 +1,34 @@
 import React, { Component } from "react";
 
 export default class Talent extends Component {
-  state = {
-    selected: false
+  getRandomNumber = () => {
+    return this.props.randomNumber === this.props.sortNumber
+      ? this.getStyle()
+      : null;
   };
 
-  talentStyle = () => {
-    if (this.state.selected) {
+  getStyle = () => {
+    if (this.props.selected === true) {
       return {
-        border: "5px solid #fff"
+        border: "2px solid #63AFD0",
+        boxShadow: "0px 0px 12px #63AFD0"
       };
     }
   };
 
-  isSelected = () => {
-    let selected = "";
-    if (Math.random() < 0.5) {
-      selected = true;
-    } else {
-      selected = false;
-    }
-    this.setState({ selected: selected });
+  formatURL = talentName => {
+    const url =
+      "https://heroespatchnotes.github.io/heroes-talents/images/talents/";
+    return `${url}${talentName}`;
   };
 
   render() {
     return (
-      <td styles={{ border: "3px solid #fff" }}>
+      <td>
         <img
-          src={this.props.talent.icon_url["64x64"]}
-          style={this.talentStyle()}
-          height="50px"
+          src={this.formatURL(this.props.talent)}
+          alt=""
+          style={this.getStyle()}
         />
       </td>
     );
