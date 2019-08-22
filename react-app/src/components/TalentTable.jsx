@@ -5,7 +5,6 @@ import TalentRow from "./TalentRow";
 
 export default class TalentTable extends Component {
   generateRandomNumber = length => {
-    console.log(length);
     return Math.floor(Math.random() * length + 1);
   };
 

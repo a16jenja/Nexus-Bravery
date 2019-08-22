@@ -2,54 +2,93 @@ import React, { Component } from "react";
 import HeroList from "./HeroList";
 import TalentTable from "./TalentTable";
 import HeroHeader from "./HeroHeader";
-import XMLHttpRequest from "xmlhttprequest";
 
 export default class HeroApp extends Component {
   state = {
     availableHeroes: [
-      // "abathur",
-      // "alarak",
-      // "alexstrasza",
-      // "anubarak",
-      // "artanis",
-      // "arthas",
-      // "auriel",
-      // "azmodan",
-      // "blaze",
-      // "brightwing",
-      // "thebutcher",
-      // "cassia",
-      // "chen",
-      // "chogall",
-      // "chromie",
-      // "deckard",
-      // "dehaka",
-      // "diablo",
-      // "dva",
-      // "falstad",
-      // "fenix",
-      // "gall",
-      // "garrosh",
-      // "gazlowe",
-      // "genji",
-      // "greymane",
-      // "guldan",
-      // "hanzo",
-      // "illidan",
-      // "imperius",
-      // "jaina",
-      // "johanna",
-      // "junkrat",
-      // "kaelthas",
-      // "kelthuzad",
-      // "kerrigan",
-      // "kharazim",
-      // "leoric",
-      // "lili",
-      // "liming",
-      // "thelostvikings",
-      // "ltmorales",
-      // "lucio"
+      "abathur",
+      "alarak",
+      "alexstrasza",
+      "anubarak",
+      "artanis",
+      "arthas",
+      "auriel",
+      "azmodan",
+      "blaze",
+      "brightwing",
+      "thebutcher",
+      "cassia",
+      "chen",
+      "chogall",
+      "chromie",
+      "deckard",
+      "dehaka",
+      "diablo",
+      "dva",
+      "falstad",
+      "fenix",
+      "gall",
+      "garrosh",
+      "gazlowe",
+      "genji",
+      "greymane",
+      "guldan",
+      "hanzo",
+      "illidan",
+      "imperius",
+      "jaina",
+      "johanna",
+      "junkrat",
+      "kaelthas",
+      "kelthuzad",
+      "kerrigan",
+      "kharazim",
+      "leoric",
+      "lili",
+      "liming",
+      "lostvikings",
+      "ltmorales",
+      "lucio",
+      "maiev",
+      "malfurion",
+      "malganis",
+      "malthael",
+      "medivh",
+      "mephisto",
+      "muradin",
+      "murky",
+      "nazeebo",
+      "nova",
+      "orphea",
+      "probius",
+      "qhira",
+      "ragnaros",
+      "raynor",
+      "rehgar",
+      "rexxar",
+      "samuro",
+      "sgthammer",
+      "sonya",
+      "stitches",
+      "stukov",
+      "sylvanas",
+      "tassadar",
+      "thrall",
+      "tracer",
+      "tychus",
+      "tyrael",
+      "tyrande",
+      "uther",
+      "valeera",
+      "valla",
+      "varian",
+      "whitemane",
+      "xul",
+      "yrel",
+      "zagara",
+      "zarya",
+      "zeratul",
+      "zuljin"
     ],
     heroes: [],
     randomHero: "",
@@ -57,87 +96,91 @@ export default class HeroApp extends Component {
     talentTiers: [1, 4, 7, 10, 13, 16, 20]
   };
 
-  getData = () => {
-    async function getUser() {
-      try {
-        const response = await axios.get("/user?ID=12345");
-        console.log(response);
-      } catch (error) {
-        console.error(error);
-      }
-    }
-  };
-
   componentDidMount() {
-    const axios = require("axios");
-    var array = [];
-    this.setState({ availableHeroes: array });
+    //   const axios = require("axios");
+    //   const url = "https://heroespatchnotes.github.io/heroes-talents/hero/";
+
+    //   this.state.availableHeroes.map(hero =>
+    //     axios
+    //       .get(url + `${hero}.json`)
+    //       .then(function(response) {
+    //         console.log(response.data);
+    //         this.setState({
+    //           heroes: [...this.state.heroes, response.data]
+    //         });
+    //       })
+    //       .catch(function(error) {
+    //         // handle error
+    //         console.log(error);
+    //       })
+    //       .finally(function() {
+    //         // always executed
+    //       })
+    //   );
+    //   console.log(this.state.heroes);
+    // }
+    // let array = [];
+    // let array2 = [];
+    // var promise = new Promise(function(resolve, reject){
+    // fetch(
+    //   "https://raw.githubusercontent.com/heroespatchnotes/heroes-talents/master/raw/json/herodata_75589_enus.json"
+    // )
+    //   promise.then(res => res.json())
+    //   promise.then(result => {
+    //     // result.map(hero => {
+    //     //   array.push(hero.name.toLowerCase());
+    //     // });
+
+    //     Object.keys(result).forEach(key => {
+    //       array.push(result[key].hyperlinkId.toLowerCase());
+    //     });
+    //     this.setState({
+    //       availableHeroes: array
+    //     });
+    //   });
+    // })
+    // fetch(url + `${hero}.json`)
+    //   .then(res => res.json())
+    //   .then(result => {
+    //     console.log(hero);
+    //     array2.push(result);
+    //   });
+
+    // this.setState({
+    //   heroes: this.state.heroes.filter(hero => {
+    //     return true;
+    //   })
+    // });
+
+    // fetch(
+    //   "https://raw.githubusercontent.com/heroespatchnotes/heroes-talents/master/raw/json/herodata_75589_enus.json"
+    // )
+    //   .then(res => res.json())
+    //   .then(result => {
+    //     this.setState({
+    //       heroesNameID: this.convertToArray(result)
+    //     });
+    //   });
+    let array = [];
+    const url = "https://heroespatchnotes.github.io/heroes-talents/hero/";
+    this.state.availableHeroes.map(hero =>
+      fetch(url + hero + ".json")
+        .then(res => res.json())
+        .then(result => {
+          this.setState({
+            heroes: [...this.state.heroes, result]
+          });
+        })
+    );
   }
-  // let array = [];
-  // let array2 = [];
-  // var promise = new Promise(function(resolve, reject){
-  // fetch(
-  //   "https://raw.githubusercontent.com/heroespatchnotes/heroes-talents/master/raw/json/herodata_75589_enus.json"
-  // )
-  //   promise.then(res => res.json())
-  //   promise.then(result => {
-  //     // result.map(hero => {
-  //     //   array.push(hero.name.toLowerCase());
-  //     // });
-
-  //     Object.keys(result).forEach(key => {
-  //       array.push(result[key].hyperlinkId.toLowerCase());
-  //     });
-  //     this.setState({
-  //       availableHeroes: array
-  //     });
-  //   });
-  // })
-  // fetch(url + `${hero}.json`)
-  //   .then(res => res.json())
-  //   .then(result => {
-  //     console.log(hero);
-  //     array2.push(result);
-  //   });
-
-  // this.setState({
-  //   heroes: this.state.heroes.filter(hero => {
-  //     return true;
-  //   })
-  // });
-
-  // fetch(
-  //   "https://raw.githubusercontent.com/heroespatchnotes/heroes-talents/master/raw/json/herodata_75589_enus.json"
-  // )
-  //   .then(res => res.json())
-  //   .then(result => {
-  //     this.setState({
-  //       heroesNameID: this.convertToArray(result)
-  //     });
-  //   });
-
-  // this.state.heroes.map(hero =>
-  //   fetch(
-  //     "https://heroespatchnotes.github.io/heroes-talents/hero/"`${
-  //       hero.short_name
-  //     }.json`
-  //   )
-  //     .then(res => res.json())
-  //     .then(result => {
-  //       console.log(hero);
-  //       this.setState({
-  //         heroesTest: this.state.heroesTest.concat(result)
-  //       });
-  //     })
-  // );
 
   // Function for getting random talents
   handleRandomButton = e => {
     const heroes = this.state.heroes;
     e.preventDefault();
-    const randomNumber = Math.floor(Math.random() * heroes.length + 1);
+    const randomNumber = Math.floor(Math.random() * heroes.length);
     const randomHero = heroes[randomNumber];
-
+    console.log(randomNumber);
     this.setState({
       randomHero: randomHero,
       visibility: true
@@ -170,7 +213,6 @@ export default class HeroApp extends Component {
               <TalentTable
                 heroes={this.state.heroes}
                 randomHero={this.state.randomHero}
-                style={this.getTalentTableStyle()}
                 talentTiers={this.state.talentTiers}
               />
             </div>

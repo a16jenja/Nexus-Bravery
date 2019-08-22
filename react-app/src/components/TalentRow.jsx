@@ -8,7 +8,7 @@ export default class TalentRow extends Component {
       <div className="container">
         <div className="row justify-content-start align-items-center">
           <div className="col-sm-2" style={{ margin: "1em 1em" }}>
-            <h2>Level {this.props.talentTier}</h2>
+            <h3>Level {this.props.talentTier}</h3>
           </div>
           {this.props.randomHero.talents[this.props.talentTier].map(talent => (
             <div className="col-sm-2" style={{ margin: "1em 1em" }}>
