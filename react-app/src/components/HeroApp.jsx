@@ -161,7 +161,6 @@ export default class HeroApp extends Component {
     //       heroesNameID: this.convertToArray(result)
     //     });
     //   });
-    let array = [];
     const url = "https://heroespatchnotes.github.io/heroes-talents/hero/";
     this.state.availableHeroes.map(hero =>
       fetch(url + hero + ".json")

@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import Talent from "./Talent";
-import uuidv4 from "uuid/v4";
 import TalentRow from "./TalentRow";
 
 export default class TalentTable extends Component {

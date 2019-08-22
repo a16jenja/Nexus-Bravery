@@ -17,7 +17,7 @@ export default class Hero extends Component {
         src={this.formatText(this.props.hero)}
         alt=""
         height="60px"
-        style={{ margin: "0.5em" }}
+        style={{ margin: "0.1em" }}
       />
     );
   }
