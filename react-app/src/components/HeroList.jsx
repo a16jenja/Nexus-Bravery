@@ -7,7 +7,11 @@ class HeroList extends Component {
       <div className="container col-12">
         <div className="row">
           {this.props.heroes.map(hero => (
-            <Hero key={hero.id} hero={hero} />
+            <Hero
+              key={hero.id}
+              hero={hero}
+              onHeroSelect={this.props.onHeroSelect}
+            />
           ))}
         </div>
       </div>

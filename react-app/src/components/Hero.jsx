@@ -17,7 +17,8 @@ export default class Hero extends Component {
         src={this.formatText(this.props.hero)}
         alt=""
         height="60px"
-        style={{ margin: "0.1em" }}
+        style={{ margin: "0.1em", cursor: "pointer" }}
+        onClick={() => this.props.onHeroSelect(this.props.hero)}
       />
     );
   }

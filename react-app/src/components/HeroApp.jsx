@@ -91,76 +91,13 @@ export default class HeroApp extends Component {
       "zuljin"
     ],
     heroes: [],
+    selectedHeroes: [],
     randomHero: "",
     visibility: false,
     talentTiers: [1, 4, 7, 10, 13, 16, 20]
   };
 
   componentDidMount() {
-    //   const axios = require("axios");
-    //   const url = "https://heroespatchnotes.github.io/heroes-talents/hero/";
-
-    //   this.state.availableHeroes.map(hero =>
-    //     axios
-    //       .get(url + `${hero}.json`)
-    //       .then(function(response) {
-    //         console.log(response.data);
-    //         this.setState({
-    //           heroes: [...this.state.heroes, response.data]
-    //         });
-    //       })
-    //       .catch(function(error) {
-    //         // handle error
-    //         console.log(error);
-    //       })
-    //       .finally(function() {
-    //         // always executed
-    //       })
-    //   );
-    //   console.log(this.state.heroes);
-    // }
-    // let array = [];
-    // let array2 = [];
-    // var promise = new Promise(function(resolve, reject){
-    // fetch(
-    //   "https://raw.githubusercontent.com/heroespatchnotes/heroes-talents/master/raw/json/herodata_75589_enus.json"
-    // )
-    //   promise.then(res => res.json())
-    //   promise.then(result => {
-    //     // result.map(hero => {
-    //     //   array.push(hero.name.toLowerCase());
-    //     // });
-
-    //     Object.keys(result).forEach(key => {
-    //       array.push(result[key].hyperlinkId.toLowerCase());
-    //     });
-    //     this.setState({
-    //       availableHeroes: array
-    //     });
-    //   });
-    // })
-    // fetch(url + `${hero}.json`)
-    //   .then(res => res.json())
-    //   .then(result => {
-    //     console.log(hero);
-    //     array2.push(result);
-    //   });
-
-    // this.setState({
-    //   heroes: this.state.heroes.filter(hero => {
-    //     return true;
-    //   })
-    // });
-
-    // fetch(
-    //   "https://raw.githubusercontent.com/heroespatchnotes/heroes-talents/master/raw/json/herodata_75589_enus.json"
-    // )
-    //   .then(res => res.json())
-    //   .then(result => {
-    //     this.setState({
-    //       heroesNameID: this.convertToArray(result)
-    //     });
-    //   });
     const url = "https://heroespatchnotes.github.io/heroes-talents/hero/";
     this.state.availableHeroes.map(hero =>
       fetch(url + hero + ".json")
@@ -175,8 +112,8 @@ export default class HeroApp extends Component {
 
   // Function for getting random talents
   handleRandomButton = e => {
-    const heroes = this.state.heroes;
     e.preventDefault();
+    const heroes = this.state.heroes;
     const randomNumber = Math.floor(Math.random() * heroes.length);
     const randomHero = heroes[randomNumber];
     console.log(randomNumber);
@@ -185,6 +122,17 @@ export default class HeroApp extends Component {
       visibility: true
     });
     console.log(this.state.randomHero);
+  };
+
+  handleHeroSelect = (hero, e) => {
+    this.setState({
+      selectedHeroes: [...this.state.heroes]
+    });
+    console.log(hero);
+    this.setState({
+      randomHero: hero,
+      visibility: true
+    });
   };
 
   render() {
@@ -217,7 +165,10 @@ export default class HeroApp extends Component {
             </div>
           )}
           <div className="container">
-            <HeroList heroes={this.state.heroes} />
+            <HeroList
+              heroes={this.state.heroes}
+              onHeroSelect={this.handleHeroSelect}
+            />
           </div>
         </div>
       </div>
