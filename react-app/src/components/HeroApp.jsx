@@ -4,6 +4,8 @@ import TalentTable from "./TalentTable";
 import HeroHeader from "./HeroHeader";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import Dropdown from "react-bootstrap/Dropdown";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
 
 export default class HeroApp extends Component {
   state = {
@@ -174,15 +176,6 @@ export default class HeroApp extends Component {
     });
   };
 
-  // handleChangeOpacity = hero1 => {
-  //   let selectedHeroes = this.state.selectedHeroes;
-  //   selectedHeroes.map(hero => {
-  //     if (hero.id === hero1.id) {
-  //       hero.isSelected = !hero.isSelected;
-  //     }
-  //   });
-  // };
-
   render() {
     return (
       <div className="parent">
@@ -190,7 +183,7 @@ export default class HeroApp extends Component {
           <h1 className="text-center text-light">HOTS Bravery</h1>
         </div>
 
-        <div className="container">
+        <Container>
           <div className="heroHeader header">
             <HeroHeader randomHero={this.state.randomHero} />
           </div>
@@ -203,6 +196,8 @@ export default class HeroApp extends Component {
             Roll
           </button>
 
+          {this.state.visibility && <hr />}
+
           {this.state.visibility && (
             <div className="row justify-content-center">
               <TalentTable
@@ -213,14 +208,18 @@ export default class HeroApp extends Component {
             </div>
           )}
 
-          <DropdownButton title="Selection" variant="info">
-            <Dropdown.Item eventKey="1" onClick={this.handleSelectAll}>
-              Select all
-            </Dropdown.Item>
-            <Dropdown.Item eventKey="2" onClick={this.handleDeselectAll}>
-              Deselect all
-            </Dropdown.Item>
-          </DropdownButton>
+          {this.state.visibility && <hr />}
+
+          <Row>
+            <DropdownButton title="Selection" variant="info">
+              <Dropdown.Item eventKey="1" onClick={this.handleSelectAll}>
+                Select all
+              </Dropdown.Item>
+              <Dropdown.Item eventKey="2" onClick={this.handleDeselectAll}>
+                Deselect all
+              </Dropdown.Item>
+            </DropdownButton>
+          </Row>
 
           <div className="container">
             <HeroList
@@ -231,7 +230,7 @@ export default class HeroApp extends Component {
               allDeselected={this.state.allDeselected}
             />
           </div>
-        </div>
+        </Container>
       </div>
     );
   }

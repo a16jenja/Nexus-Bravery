@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Image from "react-bootstrap/Image";
 
 export default class Hero extends Component {
   formatText = hero => {
@@ -14,7 +15,7 @@ export default class Hero extends Component {
   render() {
     let img_class = this.props.hero.isSelected ? "1" : "0.5";
     return (
-      <img
+      <Image
         src={this.formatText(this.props.hero)}
         alt=""
         height="60px"
