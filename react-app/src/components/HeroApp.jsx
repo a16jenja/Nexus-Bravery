@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import HeroList from "./HeroList";
 import TalentTable from "./TalentTable";
 import HeroHeader from "./HeroHeader";
+import DropdownButton from "react-bootstrap/DropdownButton";
+import Dropdown from "react-bootstrap/Dropdown";
 
 export default class HeroApp extends Component {
   state = {
@@ -94,6 +96,7 @@ export default class HeroApp extends Component {
     selectedHeroes: [],
     randomHero: "",
     visibility: false,
+    allDeselected: false,
     talentTiers: [1, 4, 7, 10, 13, 16, 20]
   };
 
@@ -103,9 +106,13 @@ export default class HeroApp extends Component {
       fetch(url + hero + ".json")
         .then(res => res.json())
         .then(result => {
+          var array = result;
+          var pair = { isSelected: true };
+          array = { ...array, ...pair };
+          console.log(array);
           this.setState({
-            heroes: [...this.state.heroes, result],
-            selectedHeroes: [...this.state.selectedHeroes, result]
+            heroes: [...this.state.heroes, array],
+            selectedHeroes: [...this.state.selectedHeroes, array]
           });
         })
     );
@@ -124,20 +131,57 @@ export default class HeroApp extends Component {
     console.log(this.state.randomHero);
   };
 
-  handleHeroSelect = (hero, selected, e) => {
+  handleHeroSelect = (hero, e) => {
     var array = [...this.state.selectedHeroes];
-    if (selected === true) {
-      var heroIndex = array.findIndex(x => x.id === hero.id);
+    var heroIndex = array.findIndex(x => x.id === hero.id);
+    if (hero.isSelected === true) {
       array.splice(heroIndex, 1);
+      console.log("if");
+      console.log(hero.isSelected);
+      hero.isSelected = !hero.isSelected;
     } else {
       var heroIndex = this.state.heroes.findIndex(x => x.id === hero.id);
       array.push(this.state.heroes[heroIndex]);
+      array[array.length - 1].isSelected = false;
+      console.log("else");
+      console.log(hero.isSelected);
+      hero.isSelected = !hero.isSelected;
     }
     this.setState({
       selectedHeroes: [...array]
     });
-    console.log(array);
   };
+
+  handleDeselectAll = () => {
+    let array = this.state.heroes;
+    array.map(hero => {
+      hero.isSelected = false;
+    });
+    this.setState({
+      heroes: array,
+      selectedHeroes: []
+    });
+  };
+
+  handleSelectAll = () => {
+    let array = this.state.heroes;
+    array.map(hero => {
+      hero.isSelected = true;
+    });
+    this.setState({
+      heroes: array,
+      selectedHeroes: this.state.heroes
+    });
+  };
+
+  // handleChangeOpacity = hero1 => {
+  //   let selectedHeroes = this.state.selectedHeroes;
+  //   selectedHeroes.map(hero => {
+  //     if (hero.id === hero1.id) {
+  //       hero.isSelected = !hero.isSelected;
+  //     }
+  //   });
+  // };
 
   render() {
     return (
@@ -168,10 +212,23 @@ export default class HeroApp extends Component {
               />
             </div>
           )}
+
+          <DropdownButton title="Selection" variant="info">
+            <Dropdown.Item eventKey="1" onClick={this.handleSelectAll}>
+              Select all
+            </Dropdown.Item>
+            <Dropdown.Item eventKey="2" onClick={this.handleDeselectAll}>
+              Deselect all
+            </Dropdown.Item>
+          </DropdownButton>
+
           <div className="container">
             <HeroList
               heroes={this.state.heroes}
+              selectedHeroes={this.state.selectedHeroes}
               onHeroSelect={this.handleHeroSelect}
+              onHeroSelect2={this.handleChangeOpacity}
+              allDeselected={this.state.allDeselected}
             />
           </div>
         </div>
