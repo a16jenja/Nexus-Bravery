@@ -1,13 +1,16 @@
 import React, { Component } from "react";
 import "./App.css";
 import HeroApp from "./components/HeroApp";
+import ErrorBoundary from "./components/ErrorBoundary";
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <HeroApp />
-      </div>
+      <ErrorBoundary>
+        <div className="App">
+          <HeroApp />
+        </div>
+      </ErrorBoundary>
     );
   }
 }

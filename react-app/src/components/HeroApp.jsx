@@ -122,6 +122,13 @@ export default class HeroApp extends Component {
 
   // Function for getting random talents
   handleRandomButton = e => {
+    if (
+      this.state.selectedHeroes.length === undefined ||
+      this.state.selectedHeroes.length == 0
+    ) {
+      alert("Please select at least one hero.");
+      return;
+    }
     e.preventDefault();
     let heroes = this.state.selectedHeroes;
     const randomNumber = Math.floor(Math.random() * heroes.length);
@@ -179,14 +186,16 @@ export default class HeroApp extends Component {
   render() {
     return (
       <div className="parent">
-        <div className="header p-3 mb-2 bg-dark">
+        <div className="header p-3 mb-2">
           <h1 className="text-center text-light">HOTS Bravery</h1>
         </div>
 
         <Container>
-          <div className="heroHeader header">
-            <HeroHeader randomHero={this.state.randomHero} />
-          </div>
+          {this.state.visibility && (
+            <div className="heroHeader header">
+              <HeroHeader randomHero={this.state.randomHero} />
+            </div>
+          )}
 
           <button
             type="button"
@@ -211,7 +220,7 @@ export default class HeroApp extends Component {
           {this.state.visibility && <hr />}
 
           <Row>
-            <DropdownButton title="Selection" variant="info">
+            <DropdownButton title="Selection" variant="secondary">
               <Dropdown.Item eventKey="1" onClick={this.handleSelectAll}>
                 Select all
               </Dropdown.Item>
