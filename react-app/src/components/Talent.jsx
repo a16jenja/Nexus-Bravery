@@ -13,7 +13,12 @@ export default class Talent extends Component {
     if (selected === true) {
       return {
         border: "0.3em solid #63AFD0",
-        boxShadow: "0px 0px 12px #63AFD0"
+        boxShadow: "0px 0px 12px #63AFD0",
+        cursor: "pointer"
+      };
+    } else {
+      return {
+        cursor: "pointer"
       };
     }
   };
@@ -31,6 +36,9 @@ export default class Talent extends Component {
         alt=""
         style={this.getStyle()}
         height="60em"
+        data-toggle="tooltip"
+        data-placement="top"
+        title={this.props.talent.description}
       />
     );
   }
