@@ -104,7 +104,8 @@ export default class HeroApp extends Component {
         .then(res => res.json())
         .then(result => {
           this.setState({
-            heroes: [...this.state.heroes, result]
+            heroes: [...this.state.heroes, result],
+            selectedHeroes: [...this.state.selectedHeroes, result]
           });
         })
     );
@@ -113,10 +114,9 @@ export default class HeroApp extends Component {
   // Function for getting random talents
   handleRandomButton = e => {
     e.preventDefault();
-    const heroes = this.state.heroes;
+    let heroes = this.state.selectedHeroes;
     const randomNumber = Math.floor(Math.random() * heroes.length);
     const randomHero = heroes[randomNumber];
-    console.log(randomNumber);
     this.setState({
       randomHero: randomHero,
       visibility: true
@@ -124,15 +124,19 @@ export default class HeroApp extends Component {
     console.log(this.state.randomHero);
   };
 
-  handleHeroSelect = (hero, e) => {
+  handleHeroSelect = (hero, selected, e) => {
+    var array = [...this.state.selectedHeroes];
+    if (selected === true) {
+      var heroIndex = array.findIndex(x => x.id === hero.id);
+      array.splice(heroIndex, 1);
+    } else {
+      var heroIndex = this.state.heroes.findIndex(x => x.id === hero.id);
+      array.push(this.state.heroes[heroIndex]);
+    }
     this.setState({
-      selectedHeroes: [...this.state.heroes]
+      selectedHeroes: [...array]
     });
-    console.log(hero);
-    this.setState({
-      randomHero: hero,
-      visibility: true
-    });
+    console.log(array);
   };
 
   render() {

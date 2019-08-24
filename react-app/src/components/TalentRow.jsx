@@ -13,7 +13,7 @@ export default class TalentRow extends Component {
           {this.props.randomHero.talents[this.props.talentTier].map(talent => (
             <div className="col-sm-2" style={{ margin: "1em 1em" }}>
               <Talent
-                key={uuidv4()}
+                key={talent.tooltipId}
                 talent={talent}
                 randomHero={this.props.randomHero}
                 randomNumber={this.props.randomNumber}

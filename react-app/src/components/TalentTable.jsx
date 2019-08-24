@@ -10,6 +10,7 @@ export default class TalentTable extends Component {
     return (
       <React.Fragment>
         <TalentRow
+          key={this.props.talentTiers[0]}
           heroes={this.props.heroes}
           randomHero={this.props.randomHero}
           talentTier={this.props.talentTiers[0]}
@@ -19,6 +20,7 @@ export default class TalentTable extends Component {
         />
 
         <TalentRow
+          key={this.props.talentTiers[1]}
           heroes={this.props.heroes}
           randomHero={this.props.randomHero}
           talentTier={this.props.talentTiers[1]}
@@ -28,6 +30,7 @@ export default class TalentTable extends Component {
         />
 
         <TalentRow
+          key={this.props.talentTiers[2]}
           heroes={this.props.heroes}
           randomHero={this.props.randomHero}
           talentTier={this.props.talentTiers[2]}
@@ -37,6 +40,7 @@ export default class TalentTable extends Component {
         />
 
         <TalentRow
+          key={this.props.talentTiers[3]}
           heroes={this.props.heroes}
           randomHero={this.props.randomHero}
           talentTier={this.props.talentTiers[3]}
@@ -46,6 +50,7 @@ export default class TalentTable extends Component {
         />
 
         <TalentRow
+          key={this.props.talentTiers[4]}
           heroes={this.props.heroes}
           randomHero={this.props.randomHero}
           talentTier={this.props.talentTiers[4]}
@@ -55,6 +60,7 @@ export default class TalentTable extends Component {
         />
 
         <TalentRow
+          key={this.props.talentTiers[5]}
           heroes={this.props.heroes}
           randomHero={this.props.randomHero}
           talentTier={this.props.talentTiers[5]}
@@ -64,6 +70,7 @@ export default class TalentTable extends Component {
         />
 
         <TalentRow
+          key={this.props.talentTiers[6]}
           heroes={this.props.heroes}
           randomHero={this.props.randomHero}
           talentTier={this.props.talentTiers[6]}
