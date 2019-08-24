@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import Tooltip from "react-bootstrap/Tooltip";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 
 export default class Talent extends Component {
   state = {
@@ -31,15 +33,19 @@ export default class Talent extends Component {
 
   render() {
     return (
-      <img
-        src={this.formatURL(this.props.talent.icon)}
-        alt=""
-        style={this.getStyle()}
-        height="60em"
-        data-toggle="tooltip"
-        data-placement="top"
-        title={this.props.talent.description}
-      />
+      <OverlayTrigger
+        placement="top"
+        overlay={
+          <Tooltip id="tooltip-top">{this.props.talent.description}</Tooltip>
+        }
+      >
+        <img
+          src={this.formatURL(this.props.talent.icon)}
+          alt=""
+          style={this.getStyle()}
+          height="60em"
+        />
+      </OverlayTrigger>
     );
   }
 }

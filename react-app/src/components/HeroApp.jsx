@@ -97,7 +97,6 @@ export default class HeroApp extends Component {
   };
 
   componentDidMount() {
-    $('[data-toggle="tooltip"]').tooltip();
     //   const axios = require("axios");
     //   const url = "https://heroespatchnotes.github.io/heroes-talents/hero/";
 
