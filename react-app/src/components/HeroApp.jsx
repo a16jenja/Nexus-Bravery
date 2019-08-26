@@ -187,7 +187,7 @@ export default class HeroApp extends Component {
     return (
       <div className="parent">
         <div className="header p-3 mb-2">
-          <h1 className="text-center text-light">HOTS Bravery</h1>
+          <h1 className="text-center text-light">Nexus Bravery</h1>
         </div>
 
         <Container>
