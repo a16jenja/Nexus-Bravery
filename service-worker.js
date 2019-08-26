@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/Nexus-Bravery/precache-manifest.719137e79a289b123b6f63d6a0a1e36e.js"
+  "/Nexus-Bravery/precache-manifest.56c9f8a2168773948783c9ae890f9b10.js"
 );
 
 self.addEventListener('message', (event) => {

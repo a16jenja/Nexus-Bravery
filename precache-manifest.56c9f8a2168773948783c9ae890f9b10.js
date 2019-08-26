@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "3877f0b72365391ca8c2a159530b9166",
+    "revision": "ba27735c0927c18cf13f00cb100131f6",
     "url": "/Nexus-Bravery/index.html"
   },
   {
-    "revision": "6cfbb127267564212e2e",
+    "revision": "790afd0b8e2d559ca03c",
     "url": "/Nexus-Bravery/static/css/2.22a7d4ef.chunk.css"
   },
   {
-    "revision": "e1ce622af931c1fe82e0",
+    "revision": "eb1c9678a087b48c5b6f",
     "url": "/Nexus-Bravery/static/css/main.12374420.chunk.css"
   },
   {
-    "revision": "6cfbb127267564212e2e",
-    "url": "/Nexus-Bravery/static/js/2.bbda683b.chunk.js"
+    "revision": "790afd0b8e2d559ca03c",
+    "url": "/Nexus-Bravery/static/js/2.ff5dde4f.chunk.js"
   },
   {
-    "revision": "e1ce622af931c1fe82e0",
-    "url": "/Nexus-Bravery/static/js/main.07e29b2e.chunk.js"
+    "revision": "eb1c9678a087b48c5b6f",
+    "url": "/Nexus-Bravery/static/js/main.25dc8fc1.chunk.js"
   },
   {
     "revision": "5eed8354579001516179",
