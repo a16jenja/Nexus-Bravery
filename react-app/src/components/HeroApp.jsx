@@ -6,6 +6,7 @@ import DropdownButton from "react-bootstrap/DropdownButton";
 import Dropdown from "react-bootstrap/Dropdown";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
+import AdSense from "react-adsense";
 
 export default class HeroApp extends Component {
   state = {
@@ -196,7 +197,6 @@ export default class HeroApp extends Component {
               <HeroHeader randomHero={this.state.randomHero} />
             </div>
           )}
-
           <button
             type="button"
             className="btn btn-primary"
@@ -204,9 +204,7 @@ export default class HeroApp extends Component {
           >
             Roll
           </button>
-
           {this.state.visibility && <hr />}
-
           {this.state.visibility && (
             <div className="row justify-content-center">
               <TalentTable
@@ -216,9 +214,7 @@ export default class HeroApp extends Component {
               />
             </div>
           )}
-
           {this.state.visibility && <hr />}
-
           <Row>
             <DropdownButton title="Selection" variant="secondary">
               <Dropdown.Item eventKey="1" onClick={this.handleSelectAll}>
@@ -229,7 +225,6 @@ export default class HeroApp extends Component {
               </Dropdown.Item>
             </DropdownButton>
           </Row>
-
           <div className="container">
             <HeroList
               heroes={this.state.heroes}
@@ -239,6 +234,13 @@ export default class HeroApp extends Component {
               allDeselected={this.state.allDeselected}
             />
           </div>
+
+          <AdSense.Google
+            client="ca-pub-7292810486004926"
+            slot="7806394673"
+            style={{ width: 500, height: 300, float: "left" }}
+            format=""
+          />
         </Container>
       </div>
     );
