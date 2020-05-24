@@ -26,6 +26,7 @@ export default class HeroApp extends Component {
       "chen",
       "chogall",
       "chromie",
+      "deathwing",
       "deckard",
       "dehaka",
       "diablo",
