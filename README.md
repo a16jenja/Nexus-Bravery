@@ -1,5 +1,5 @@
 # Nexus-Bravery
-This project was created with React.
+This project was created with React. Check it out here: https://a16jenja.github.io/Nexus-Bravery/
 
 A quick random hero picker and random talent generator for the game Heroes of the Storm to have some fun with.
 
